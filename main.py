@@ -13,6 +13,9 @@ BOT_CONFIG = {
 }
 
 def get_intent(text):
-    print('deepeeer')
+    for intent in BOT_CONFIG['intents'].keys():
+        print(intent)
+        for example in BOT_CONFIG['intents'][intent]['examples']:
+            print(example)
 
 get_intent('dsads')
