@@ -32,7 +32,7 @@ for intent in BOT_CONFIG['intents'].keys():
 train_texts, test_texts, y_train, y_test = train_test_split(texts, y, random_state=42, test_size=0.32)
 
 
-vectorizer = CountVectorizer(ngram_range=(1,5))
+vectorizer = CountVectorizer(ngram_range=(1,5), analyzer='char_wb')
 X_train = vectorizer.fit_transform(train_texts)
 X_test = vectorizer.transform(test_texts)
 
@@ -40,14 +40,14 @@ X_test = vectorizer.transform(test_texts)
 vocab = vectorizer.get_feature_names_out()
 
 
-# len(vocab)
+len(vocab)
 
 
 clf = LogisticRegression().fit(X_train, y_train)
 clf.score(X_train, y_train), clf.score(X_test, y_test)
 
 
-clf.predict(vectorizer.transform(['Шкаф']))
+clf.predict(vectorizer.transform(['замер']))
 
 
 BOT_CONFIG['intents']['zamer']
